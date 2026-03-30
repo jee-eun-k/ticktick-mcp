@@ -1,0 +1,71 @@
+project_id: 69ca3b248f0826bd7241769e
+project_name: "ticktick-mcp Sprint"
+last_synced: 2026-03-30T18:00:00Z
+synced_from: 2026-03-30T00:00:00Z
+stories:
+  1-1-extract-domain-models:
+    ticktick_id: 69ca3b3d8f0823c50a09abc4
+    last_status: done
+  1-2-extract-http-client:
+    ticktick_id: 69ca3b3d8f0844de8577cc6d
+    last_status: done
+  1-3-extract-configuration:
+    ticktick_id: 69ca3b3d8f0826bd72417abd
+    last_status: done
+  1-4-extract-error-hierarchy:
+    ticktick_id: 69ca3b3e8f0844de8577cc75
+    last_status: done
+  1-5-extract-formatters:
+    ticktick_id: 69ca3b3e8f084738e12fe7bb
+    last_status: done
+  1-6-extract-token-store:
+    ticktick_id: 69ca3b3e8f0844de8577cc7b
+    last_status: done
+  1-7-split-tools-by-domain:
+    ticktick_id: 69ca3b3e8f0898cc049582a0
+    last_status: done
+  1-8-migrate-to-modern-packaging:
+    ticktick_id: 69ca3b3e8f0844de8577cc87
+    last_status: done
+  1-9-write-test-suite:
+    ticktick_id: 69ca3b3e8f0898cc049582aa
+    last_status: done
+  2-1-fix-subtask-update-logic:
+    ticktick_id: 69ca3b3f8f0844de8577cc8e
+    last_status: done
+  2-2-add-retry-with-exponential-backoff:
+    ticktick_id: 69ca3b3f8f0898cc049582b4
+    last_status: backlog
+  2-3-add-token-refresh-cli-command:
+    ticktick_id: 69ca3b3f8f0826bd72417adf
+    last_status: backlog
+  2-4-validate-dida365-compatibility:
+    ticktick_id: 69ca3b3f8f0826bd72417ae5
+    last_status: backlog
+  3-1-recurring-task-support:
+    ticktick_id: 69ca3b3f8f0844de8577cca4
+    last_status: backlog
+  3-2-tag-support:
+    ticktick_id: 69ca3b3f8f0898cc049582c3
+    last_status: backlog
+  3-3-task-comments:
+    ticktick_id: 69ca3b3f8f0844de8577cca8
+    last_status: backlog
+  3-4-habit-tracking:
+    ticktick_id: 69ca3b408f0826bd72417af8
+    last_status: backlog
+  3-5-calendar-integration:
+    ticktick_id: 69ca3b408f0844de8577ccbd
+    last_status: backlog
+  4-1-list-available-tools-cli-command:
+    ticktick_id: 69ca3b408f0826bd72417b0b
+    last_status: backlog
+  4-2-update-readme-for-new-architecture:
+    ticktick_id: 69ca3b408f084738e12fe7ee
+    last_status: backlog
+  4-3-add-contributing-guide:
+    ticktick_id: 69ca3b408f084738e12fe7f3
+    last_status: backlog
+  4-4-add-integration-test-harness:
+    ticktick_id: 69ca3b408f0823c50a09ac55
+    last_status: backlog
