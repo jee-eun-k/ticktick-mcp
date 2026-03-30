@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ticktick-mcp"
+version = "0.2.0"
+description = "MCP server for TickTick task management"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.2.0,<2.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "httpx>=0.27.0,<1.0.0",
+]
+
+[project.scripts]
+ticktick-mcp = "ticktick_mcp.cli:main"
+ticktick-auth = "ticktick_mcp.authenticate:main"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "A", "SIM"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["ticktick_mcp"]
+omit = [
+    "ticktick_mcp/src/auth.py",
+    "ticktick_mcp/authenticate.py",
+    "ticktick_mcp/cli.py",
+    "ticktick_mcp/src/server.py",
+]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-httpx>=0.30",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]

@@ -36,7 +36,7 @@ Before you begin, you will need:
     """)
     
     # Check if .env file exists and already has credentials
-    env_path = Path('.env')
+    env_path = Path(__file__).resolve().parent.parent / ".env"
     has_credentials = False
     
     if env_path.exists():

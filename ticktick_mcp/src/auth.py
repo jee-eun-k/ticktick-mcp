@@ -14,7 +14,7 @@ import base64
 import http.server
 import socketserver
 import urllib.parse
-import requests
+import httpx
 from pathlib import Path
 from typing import Dict, Optional, Tuple, Any
 from dotenv import load_dotenv
@@ -132,9 +132,9 @@ class OAuthCallbackHandler(http.server.BaseHTTPRequestHandler):
 class TickTickAuth:
     """TickTick OAuth authentication manager."""
     
-    def __init__(self, client_id: str = None, client_secret: str = None, 
-                 redirect_uri: str = "http://localhost:8000/callback",
-                 port: int = 8000, env_file: str = None):
+    def __init__(self, client_id: str = None, client_secret: str = None,
+                 redirect_uri: str = "http://localhost:8080/callback",
+                 port: int = 8080, env_file: str = None):
         """
         Initialize the TickTick authentication manager.
         
@@ -283,13 +283,13 @@ class TickTickAuth:
         headers = {
             "Authorization": f"Basic {auth_b64}",
             "Content-Type": "application/x-www-form-urlencoded",
-            "Accept-Encoding": None,
-            "User-Agent": 'curl/8.7.1'
+            "Accept-Encoding": "identity",
+            "User-Agent": "curl/8.7.1",
         }
         
         try:
             # Send the token request
-            response = requests.post(self.token_url, data=token_data, headers=headers)
+            response = httpx.post(self.token_url, data=token_data, headers=headers)
             response.raise_for_status()
             
             # Parse the response
@@ -300,7 +300,7 @@ class TickTickAuth:
             
             return "Authentication successful! Access token saved to .env file."
             
-        except requests.exceptions.RequestException as e:
+        except httpx.HTTPError as e:
             logger.error(f"Error exchanging code for token: {e}")
             if hasattr(e, 'response') and e.response is not None:
                 try:
@@ -315,8 +315,8 @@ class TickTickAuth:
         if not self.tokens:
             return
         
-        # Load existing .env file content
-        env_path = Path('.env')
+        # Load existing .env file content (use project root, not CWD)
+        env_path = Path(__file__).resolve().parent.parent.parent / ".env"
         env_content = {}
         
         if env_path.exists():
@@ -343,7 +343,8 @@ class TickTickAuth:
             for key, value in env_content.items():
                 f.write(f"{key}={value}\n")
         
-        logger.info("Tokens saved to .env file")
+        logger.info("Tokens saved to %s", env_path)
+        print(f"Tokens saved to {env_path}")
 
 def setup_auth_cli():
     """Run the authentication flow as a CLI utility."""
@@ -352,9 +353,9 @@ def setup_auth_cli():
     parser = argparse.ArgumentParser(description='TickTick OAuth Authentication')
     parser.add_argument('--client-id', help='TickTick client ID')
     parser.add_argument('--client-secret', help='TickTick client secret')
-    parser.add_argument('--redirect-uri', default='http://localhost:8000/callback',
+    parser.add_argument('--redirect-uri', default='http://localhost:8080/callback',
                         help='OAuth redirect URI')
-    parser.add_argument('--port', type=int, default=8000,
+    parser.add_argument('--port', type=int, default=8080,
                         help='Port to use for OAuth callback server')
     parser.add_argument('--env-file', help='Path to .env file with credentials')
     
