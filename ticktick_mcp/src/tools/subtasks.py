@@ -104,6 +104,7 @@ def register(mcp: FastMCP) -> None:
         result = await client.update_task(
             task_id=task_id,
             project_id=project_id,
+            items=items,
         )
         return f"Subtask updated successfully:\n\n{format_task_dict(result)}"
 
@@ -134,7 +135,7 @@ def register(mcp: FastMCP) -> None:
         if not found:
             raise ValidationError(f"Subtask '{subtask_id}' not found in task '{task_id}'.")
 
-        await client.update_task(task_id=task_id, project_id=project_id)
+        await client.update_task(task_id=task_id, project_id=project_id, items=items)
         return f"Subtask '{subtask_id}' marked as complete."
 
     @mcp.tool()
@@ -157,5 +158,5 @@ def register(mcp: FastMCP) -> None:
         if len(items) == len(task.get("items", [])):
             raise ValidationError(f"Subtask '{subtask_id}' not found in task '{task_id}'.")
 
-        await client.update_task(task_id=task_id, project_id=project_id)
+        await client.update_task(task_id=task_id, project_id=project_id, items=items)
         return f"Subtask '{subtask_id}' deleted successfully."

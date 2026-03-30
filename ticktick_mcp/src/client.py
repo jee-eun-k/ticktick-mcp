@@ -199,6 +199,7 @@ class TickTickClient:
         priority: int | None = None,
         start_date: str | None = None,
         due_date: str | None = None,
+        items: list[dict[str, Any]] | None = None,
     ) -> dict[str, Any]:
         data: dict[str, Any] = {"id": task_id, "projectId": project_id}
         if title is not None:
@@ -211,6 +212,8 @@ class TickTickClient:
             data["startDate"] = start_date
         if due_date is not None:
             data["dueDate"] = due_date
+        if items is not None:
+            data["items"] = items
         return await self._request("POST", f"/task/{task_id}", json_data=data)
 
     async def complete_task(self, project_id: str, task_id: str) -> dict[str, Any]:

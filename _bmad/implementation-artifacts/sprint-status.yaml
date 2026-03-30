@@ -1,0 +1,70 @@
+# generated: 2026-03-30T00:00:00Z
+# last_updated: 2026-03-30T00:00:00Z
+# project: ticktick-mcp
+# project_key: TICKMCP
+# tracking_system: file-system
+# story_location: /Users/alexa/Development/999_personal/ticktick-mcp/_bmad/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+
+generated: 2026-03-30T00:00:00Z
+last_updated: 2026-03-30T00:00:00Z
+project: ticktick-mcp
+project_key: TICKMCP
+tracking_system: file-system
+story_location: /Users/alexa/Development/999_personal/ticktick-mcp/_bmad/implementation-artifacts
+
+development_status:
+  # Epic 1: Modularization & Foundation (COMPLETE)
+  epic-1: done
+  1-1-extract-domain-models: done
+  1-2-extract-http-client: done
+  1-3-extract-configuration: done
+  1-4-extract-error-hierarchy: done
+  1-5-extract-formatters: done
+  1-6-extract-token-store: done
+  1-7-split-tools-by-domain: done
+  1-8-migrate-to-modern-packaging: done
+  1-9-write-test-suite: done
+  epic-1-retrospective: optional
+
+  # Epic 2: Bug Fixes & Reliability
+  epic-2: in-progress
+  2-1-fix-subtask-update-logic: done
+  2-2-add-retry-with-exponential-backoff: backlog
+  2-3-add-token-refresh-cli-command: backlog
+  2-4-validate-dida365-compatibility: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: Feature Expansion
+  epic-3: backlog
+  3-1-recurring-task-support: backlog
+  3-2-tag-support: backlog
+  3-3-task-comments: backlog
+  3-4-habit-tracking: backlog
+  3-5-calendar-integration: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Developer Experience
+  epic-4: backlog
+  4-1-list-available-tools-cli-command: backlog
+  4-2-update-readme-for-new-architecture: backlog
+  4-3-add-contributing-guide: backlog
+  4-4-add-integration-test-harness: backlog
+  epic-4-retrospective: optional

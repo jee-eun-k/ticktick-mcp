@@ -330,6 +330,9 @@ class TestSubtaskToolsExtended:
             task_id="t1", project_id="p1", subtask_id="ci1", title="New title"
         )
         assert "Subtask updated" in result
+        # Verify items with modification are passed to update_task
+        call_kwargs = mock_client.update_task.call_args
+        assert call_kwargs.kwargs["items"] == [{"id": "ci1", "title": "New title", "status": 0}]
 
     async def test_update_subtask_not_found(self, mock_client):
         from ticktick_mcp.src.tools import subtasks as mod
@@ -357,6 +360,9 @@ class TestSubtaskToolsExtended:
             mcp, "complete_subtask", task_id="t1", project_id="p1", subtask_id="ci1"
         )
         assert "marked as complete" in result
+        # Verify items with status=1 are passed to update_task
+        call_kwargs = mock_client.update_task.call_args
+        assert call_kwargs.kwargs["items"] == [{"id": "ci1", "title": "Sub", "status": 1}]
 
     async def test_delete_subtask(self, mock_client):
         from ticktick_mcp.src.tools import subtasks as mod
@@ -371,6 +377,9 @@ class TestSubtaskToolsExtended:
             mcp, "delete_subtask", task_id="t1", project_id="p1", subtask_id="ci1"
         )
         assert "deleted successfully" in result
+        # Verify empty items list is passed (subtask removed)
+        call_kwargs = mock_client.update_task.call_args
+        assert call_kwargs.kwargs["items"] == []
 
     async def test_delete_subtask_not_found(self, mock_client):
         from ticktick_mcp.src.tools import subtasks as mod
